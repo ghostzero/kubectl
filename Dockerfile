@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM gcr.io/cloud-builders/kubectl
+FROM alpine/k8s:1.20.7
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
