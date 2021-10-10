@@ -1,18 +1,8 @@
+# Container image that runs your code
 FROM gcr.io/cloud-builders/kubectl
 
-LABEL version="1.0.0"
-LABEL name="kubectl"
-LABEL repository="http://github.com/steebchen/kubectl"
-LABEL homepage="http://github.com/steebchen/kubectl"
-
-LABEL maintainer="Luca Steeb <contact@luca-steeb.com>"
-LABEL com.github.actions.name="Kubernetes CLI - kubectl"
-LABEL com.github.actions.description="Runs kubectl. The config can be provided with the secret KUBE_CONFIG_DATA."
-LABEL com.github.actions.icon="terminal"
-LABEL com.github.actions.color="blue"
-
-COPY LICENSE README.md /
+# Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
 
+# Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["help"]
